@@ -1,3 +1,13 @@
+# Experimental
+A port from [koa-views](https://github.com/queckezz/koa-views) for Magnet.
+Allow to pass in modules from options.
+```
+import nunjucks from 'nunjucks';
+opts.modules = {
+  nunjucks
+};
+```
+
 # koa-views
 
 [![Build status][travis-image]][travis-url]

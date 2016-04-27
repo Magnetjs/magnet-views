@@ -14,6 +14,7 @@ const resolve = require('path').resolve
 const send = require('koa-send')
 const _stat = require('fs').stat
 const consolidate = require('consolidate')
+const forOwn = require('lodash/forOwn')
 
 /**
 * Check if `ext` is html.
@@ -89,6 +90,10 @@ module.exports = (path, opts) => {
     extension: 'html'
   })
 
+  forOwn(opts.modules, function (module, engine) {
+    consolidate.requires[engine] = module
+  })
+
   debug('options: %j', opts)
 
   return function views (ctx, next) {
@@ -130,6 +135,7 @@ module.exports = (path, opts) => {
             return Promise.reject(new Error(`Engine not found for file ".${ext}" file extension`))
           }
 
+          console.log(resolve(paths.abs, paths.rel));
           return consolidate[engineName](resolve(paths.abs, paths.rel), state)
           .then((html) => {
             ctx.body = html
