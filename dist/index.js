@@ -69,11 +69,10 @@ var Views = function (_Base) {
                         switch (_context.prev = _context.next) {
                           case 0:
                             ctx.render = _co2.default.wrap(ctx.render.bind(ctx));
-                            console.log('in render wrap');
-                            _context.next = 4;
+                            _context.next = 3;
                             return next();
 
-                          case 4:
+                          case 3:
                           case 'end':
                             return _context.stop();
                         }

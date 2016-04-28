@@ -21,7 +21,6 @@ export default class Views extends Base {
 
     this.app.application.use(async (ctx, next) => {
       ctx.render = co.wrap(ctx.render.bind(ctx));
-      console.log('in render wrap');
       await next();
     });
   }
